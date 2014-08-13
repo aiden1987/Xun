@@ -1,5 +1,7 @@
 node_modules/
 
+public/bootstrap/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
