@@ -12,4 +12,6 @@ router.get('/hello', function(req, res) {
   res.render('hello', { title: 'XUN' });
 });
 
+
+
 module.exports = router;
