@@ -12,6 +12,10 @@ router.get('/hello', function(req, res) {
   res.render('hello', { title: 'XUN' });
 });
 
+/* GET profile page. */
+router.get('/profile', function(req, res) {
+  res.render('profile', { title: 'XUN' });
+});
 
 
 module.exports = router;
