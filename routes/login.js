@@ -9,45 +9,54 @@ var LocalStrategy = require('passport-local').Strategy;
 
 
 
-
-/* use Local Strategy to verify username and password */
-/*
 passport.use(new LocalStrategy(
+
   function(username, password, done) {
-    mongoose.model('User').findOne({ username: username }, function(err, user) {
+  console.log('abce');
+	
+    mongoose.model('User').findOne({ username: username, password: password }, function(err, user) {
       if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
+      
+	  console.log(user);
       return done(null, user);
     });
+	
   }
 ));
 
+passport.serializeUser(function(user, done) {  
+console.log('seri');
+done(null, user);
+}); 
+passport.deserializeUser(function(user, done) {  done(null, user);});
 
-router.post('/login', function(req, res) {
-  passport.authenticate('local', { successRedirect: '/hello',
-                                   failureRedirect: '/login',
-                                   failureFlash: true });
+
+router.post('/', 
+  passport.authenticate('local', { successRedirect: '/hello' ,
+                                   failureRedirect: '/' })
+);
+
+
+/* GET hello page. */
+router.get('/hello', function(req, res) {
+  res.render('hello', { title: 'XUN' , user : req.user});
 });
-*/
+
 
 
 /* Login. */
+/*
 router.post('/', function(req, res) {
   console.log('username : '+req.body.username);
   var username = req.body.username;
   var password = req.body.password;
-  /* use Local Strategy to verify username and password */
+  // use Local Strategy to verify username and password 
   mongoose.model('User').find({username : username, password: password}, 
 	function(err, user){
 		if(err) res.redirect('/');
 		res.send(user);
   });
 });
-
+*/
 
 module.exports = router;
