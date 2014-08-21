@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="aiden.dai">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/profile.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <BODY class="index">
+	<HEADER class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+	  <DIV class="container">
+		<DIV class="navbar-header">
+		  <BUTTON class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+		  <SPAN class="sr-only">Toggle navigation</SPAN>         
+		  <SPAN class="icon-bar"></SPAN>
+		  <SPAN class="icon-bar"></SPAN>
+		  <SPAN class="icon-bar"></SPAN>
+		  </BUTTON>       
+		  
+		  <A class="navbar-brand" href="#" alt="#">
+			<IMG src="/images/photo.png" class="img-circle"><SPAN><%= profile.firstName %>&nbsp; &nbsp;<%= profile.lastName %></SPAN>
+		  </A>
+		  
+		</DIV>
+	    <NAV class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+
+		<UL class="nav navbar-nav navbar-right">
+		  <LI><A href="#">Chinese Version</A></LI>
+		  <LI><A href="#">Update Profile</A></LI>
+		</UL>
+		</NAV>   
+	  </DIV>
+	</HEADER>
+
+	<DIV class="banner">
+	  <DIV class="container">
+		<STRONG>EMAIL :</STRONG><SPAN><%= profile.contacts.email %></SPAN>
+		<STRONG>TEL :</STRONG><SPAN><%= profile.contacts.tel %></SPAN>    
+	  </DIV>
+	</DIV>
+	
+	
+	<DIV class="container docs-container">
+	  <DIV class="row">
+		<DIV class="col-md-3">
+		  <DIV class="sidebar hidden-print" role="complementary">
+			<DIV id="navigation">
+				<UL class="nav sidenav">
+				  <LI><A href="#summary">SUMMARY</A></LI>
+				  <LI><A href="#prof-history">PROFESSIONAL HISTORY</A></LI>
+				  <LI><A href="#prof-experience">PROFESSIONAL EXPERIENCE</A>
+				  <UL class="nav">
+					<% for(i=0; i< profile.professionalExperiences.length; i++) {%>  
+					<LI><A href="#project<%= i %>"><%= profile.professionalExperiences[i].projectName %></A></LI>
+					<% } %>
+				  </UL>
+				  </LI>
+				  <LI><A href="#training">TRAINING</A></LI>
+				  <LI><A href="#certification">CERTIFICATION</A></LI>
+				  <LI><A href="#education">EDUCATION</A></LI>
+				  
+				</UL>
+			</DIV>
+		  </DIV>
+		</DIV>
+		
+		
+		<DIV class="col-md-9" role="main">
+		  <DIV class="panel docs-content">
+		  
+		    <!-- SUMMARY START -->
+			<DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">SUMMARY<SPAN class="anchor-target" id="summary"></SPAN> 
+				<A name="summary" class="anchor glyphicon glyphicon-link" href="#summary"></A></H1>
+			  </DIV>
+			  
+			  <P><%= profile.summary %></P>
+			 </DIV>
+			 <!-- SUMMARY END -->
+			 
+			<!-- PROFESSIONAL HISTORY START --> 
+			<DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">PROFESSIONAL HISTORY<SPAN class="anchor-target" id="prof-history"></SPAN> 
+				<A name="prof-history" class="anchor glyphicon glyphicon-link" href="#prof-history"></A></H1>
+			  </DIV>
+			  <UL>
+				  <% for(i=0; i< profile.professionalHistories.length; i++) {%>  
+				  <LI><%= profile.professionalHistories[i].company %> &nbsp; &nbsp; <%= profile.professionalHistories[i].jobTitle %></LI>
+				  <% } %>
+			 </DIV>			 
+			<!-- PROFESSIONAL HISTORY END -->  
+			
+
+			<!-- PROFESSIONAL EXPERIENCE START -->
+			 <DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">PROFESSIONAL EXPERIENCE<SPAN class="anchor-target" id="prof-experience"></SPAN> 
+				<A name="prof-experience" class="anchor glyphicon glyphicon-link" href="#prof-experience"></A>
+				</H1>
+			  </DIV>
+
+				
+				  
+				<!-- doc heading-->
+				<% for(i=0; i< profile.professionalExperiences.length; i++) {%> 
+				<H3 class="docs-heading"><%= profile.professionalExperiences[i].projectName %><SPAN class="anchor-target" id="project<%= i %>"></SPAN> 
+				<A name="project<%= i %>" class="anchor glyphicon glyphicon-link" href="#project<%= i %>"></A></H3>
+				<BLOCKQUOTE><P><%= profile.professionalExperiences[i].projectDescription %></P></BLOCKQUOTE>
+				<UL>
+				  <% for(j=0; j< profile.professionalExperiences[i].roles.length; j++) {%> 
+				  <LI><%= profile.professionalExperiences[i].roles[j].role %></LI>
+				  <% } %>
+				</UL>
+				<% } %>  
+
+
+			</DIV>
+			<!-- PROFESSIONAL EXPERIENCE END -->
+
+
+			<!-- TRAINING START --> 
+			<DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">TRAINING<SPAN class="anchor-target" id="training"></SPAN> 
+				<A name="training" class="anchor glyphicon glyphicon-link" href="#training"></A></H1>
+			  </DIV>
+			  <UL>
+				  <% for(i=0; i< profile.trainings.length; i++) {%>  
+				  <LI><%= profile.trainings[i].trainingName %>&nbsp;-&nbsp;<%= profile.trainings[i].year %></LI>
+				  <% } %>
+			 </DIV>			 
+			<!-- TRAINING END --> 
+			
+			<!-- CERTIFICATION START --> 
+			<DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">CERTIFICATION<SPAN class="anchor-target" id="certification"></SPAN> 
+				<A name="certification" class="anchor glyphicon glyphicon-link" href="#certification"></A></H1>
+			  </DIV>
+			  <UL>
+				  <% for(i=0; i< profile.certifications.length; i++) {%>  
+				  <LI><%= profile.certifications[i].certificationName %>&nbsp;-&nbsp;<%= profile.certifications[i].year %></LI>
+				  <% } %>
+			 </DIV>			 
+			<!-- CERTIFICATION END -->
+			
+			<!-- EDUCATION START --> 
+			<DIV class="docs-section">
+			  <DIV class="page-header">
+				<H1 class="docs-heading">EDUCATION<SPAN class="anchor-target" id="education"></SPAN> 
+				<A name="education" class="anchor glyphicon glyphicon-link" href="#education"></A></H1>
+			  </DIV>
+			  <UL>
+				  <% for(i=0; i< profile.educations.length; i++) {%>  
+				  <LI><%= profile.educations[i].university %> &nbsp;-&nbsp;<%= profile.educations[i].degree %></LI>
+				  <% } %>
+			  </UL>
+			 </DIV>			 
+			<!-- EDUCATION END --> 
+
+
+		  </DIV>
+		</DIV>
+	  </DIV> <!-- row end -->  
+	</DIV> <!-- -->
+
+	<footer class="footer">
+	  <div class="container">
+      <p>&copy; Company 2014</p>
+	
+	  </div>
+    </footer>
+			
+			
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<SCRIPT src="/jquery/1.11.1/jquery.min.js"></SCRIPT>
+	<SCRIPT src="/bootstrap/3.2.0/js/bootstrap.min.js"></SCRIPT>
+	<SCRIPT src="/javascripts/application.js"></SCRIPT>
+  </body>
+</html>

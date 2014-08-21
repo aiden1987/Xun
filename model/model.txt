@@ -1,0 +1,120 @@
+// user
+{
+	username : String,
+	password : String
+}
+
+//Contact
+{
+	email : String,
+	tel : String
+}
+
+// profile
+{
+	user :  [{ type: Schema.Types.ObjectId, ref: 'Story' }],
+	firstName : String,
+	lastName : String,
+	sex : String,
+	birthday : Date,
+	contacts : {
+		email : String,
+		tel : String
+	},
+	summary : String,
+	
+	
+}
+
+
+db.profiles.insert({
+	'language' : 'en',
+	'user' : ObjectId('53ec21ec1bb1a474fa08c7f0'),
+	'firstName' : 'Aiden',
+	'lastName' : 'Dai',
+	'sex' : 'M',
+	'birthday' : '1987-07-31',
+	'contacts': { 'email' : 'aiden.dai@gmail.com',  'tel' : '+86 18600000000'},
+	'summary' : 'Aiden Dai is certified Oracle SOA Consultant, and working as Senior Software Engineer in Oracle team of PricewaterhouseCoopers Information Technologies (Shanghai) Co., Ltd. in China. Aiden has more than 5 years experience on software development and more than 4 years experience on Oracle Fusion Middleware implementation, especially on system integration.',
+	professionalHistories :[{'company' : 'PricewaterhouseCoopers Information Technologies (Shanghai) Co., Ltd', 
+							'jobTitle' : 'Senior Software Engineer',
+							'dateStart' : '2012-10',
+							'dateEnd' : 'Present'
+							},{'company' : 'Semiconductor Manufacturing International Corporation', 
+							'jobTitle' : 'Software Engineer',
+							'dateStart' : '2011-07',
+							'dateEnd' : '2012-10'
+							}],
+	professionalExperiences : [{'projectName' : 'Contract Manufacture Integration project',
+								'projectDescription' : 'This is a PwC practice development project to investigate an out-of-box B2B solution among Customers and Suppliers, Oracle XML Gateway and Oracle SOA/B2B technology are used to achieve the goal.',
+								'roles' : [{'role' : 'Setup Oracle XML Gateway for tracding partners and various transactions like PO Request, PO Change and PO Acknowledge.'},
+										{'role' : 'Setup Oracle B2B for different partners and agreements with related documents'},
+										{'role' : 'Designing unit test case and perform the unit testing'}]},
+								
+							{'projectName' : 'Fusion Finance Implementation',
+								'projectDescription' : 'The project is a PwC practice development initiative and it is aimed to develop expertise around the Oracle Fusion Applications (Fusion Finance) and develop components around RICEW tasks planned as per the project plan..',
+								'roles' : [{'role' : 'Setup Oracle XML Gateway for tracding partners and various transactions like PO Request, PO Change and PO Acknowledge.'},
+										{'role' : 'Setup Oracle B2B for different partners and agreements with related documents'},
+										{'role' : 'Designing unit test case and perform the unit testing'}]}
+	],
+	trainings : [{'trainingName' : 'Oracle ADF Training', 'year': 2014}],
+	certifications : [{'certificationName' : 'Oracle ADF certifications', 'year': 2014}],
+	educations : [{'university' : 'Nanjing University', 'yearStart': 2005, 'yearEnd': 2009, 'degree': 'B.S.'}]
+	
+});
+
+db.profiles.remove({});
+
+
+<% for(i=0; i< userlist.length; i++) {%>  
+         <li><a><%= userlist[i].username %></a></li>  
+        <% } %
+
+
+
+{
+        "_id" : ObjectId("53e3294b73118a0e5bf7f485"),
+        "people" : "abc",
+        "firstName" : "abc",
+        "lastName" : "abc",
+        "age" : 12,
+        "contact" : {
+                "tel" : 110,
+                "email" : "abc@com"
+        },
+        "educations" : [
+                {
+                        "university" : "abc",
+                        "degree" : "BS",
+                        "yearRange" : "2000-2010"
+                }
+        ],
+        "projects" : [
+                {
+                        "name" : "abc",
+                        "startDate" : 2000,
+                        "endDate" : 2010,
+                        "descrpiton" : "abcifeifjie",
+                        "roles" : [
+                                "bc",
+                                "abcjif"
+                        ]
+                },
+                {
+                        "name" : "bbc",
+                        "startDate" : 2000,
+                        "endDate" : 2010,
+                        "descrpiton" : "abcifeifjie",
+                        "roles" : [
+                                "abjic",
+                                "abcjif"
+                        ]
+                }
+        ],
+        "certifications" : [
+                {
+                        "cert" : "abc",
+                        "year" : 2014
+                }
+        ]
+}
